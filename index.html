@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="CXD">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>二级域名扫描</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/u/">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/ng-table.min.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/angular-ui-router.js"></script>
+    <script src="assets/js/ng-table.min.js"></script>
+    <script src="assets/js/base.js"></script>
+    <script src="assets/js/progressbar.min.js"></script>
+    <script src="assets/js/dot.js"></script>
+    <script src="assets/js/socket.io.js"></script>
+    <script src="assets/js/directives.js"></script>
+    <script src="assets/js/app.js"></script>
+</head>
+<body>
+<canvas></canvas>
+<div class="content" ui-view></div>
+<div class="cd-slider-nav">
+    <nav>
+        <ul>
+            <li ng-class="{active:activeindex==0}" ng-click="activeindex=0"><a ui-sref="index({url:url})">首页</a></li>
+            <li ng-class="{active:activeindex==1}" ng-click="activeindex=1"><a ui-sref="doc">文档</a></li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<div class="home" ng-class="{'left':aliginleft(),'center':!aliginleft()}">
+    <div class="slogan">
+        常所用<sub>长犀盾</sub>
+    </div>
+    <div>
+        <input type="text" class="baseinput urlinput" placeholder="example.com" ng-model="url" ng-keyup="open($event)">
+        <button type="button" class="baseinput urlsumbit" ui-sref="index({url:sliceUrl(url)})"><strong>搜索</strong>
+        </button>
+    </div>
+    <ul class="domainlist" ng-show="aliginleft()">
+        <li style="border-bottom: 1px solid #72777C;">
+            <div>域名</div>
+            <div>查询进度</div>
+            <div>子域名数</div>
+        </li>
+        <li ng-repeat="(domain,info) in urls" ng-click="activeUrlTab($index)">
+            <div ng-bind="domain"></div>
+            <div progress-bar title="{{info.progress+'%'}}"></div>
+            <div ng-bind="info.subdomain.length"></div>
+        </li>
+    </ul>
+</div>
+<div class="tabs" style="width:{{WW-690}}px;"  ng-show="aliginleft()">
+    <ul ng-init="activeUrlTabIndex=0">
+        <li ng-class="{'tab-current': activeUrlTabIndex==$index}"
+            ng-repeat="(domain,info) in urls"
+            ng-click="activeUrlTab($index)">
+            <span>{{domain}}</span>
+        </li>
+    </ul>
+    <div class="divcon" style="height:{{HH-210}}px">
+        <div ng-repeat="(domain,info) in urls" ng-show="activeUrlTabIndex==$index">
+            <table ng-table="tableParams[domain].table" class="table" show-filter="true">
+                <tr ng-repeat="row in $data">
+                    <td title="'子域名'" filter="{ url: 'text'}" sortable="'url'">
+                        <a href="{{'http://'+row.url+'.'+domain}}" target="_blank">{{'http://'+row.url+'.'+domain}}</a></td>
+                    <td title="'IP'" filter="{ ip: 'text'}" sortable="'ip'">
+                        <a href="{{'http://'+row.ip}}" target="_blank">{{row.ip}}</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
