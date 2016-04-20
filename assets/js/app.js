@@ -20,7 +20,7 @@ app.run(["$rootScope", "$location", function ($rootScope, $location) {
     $rootScope.urls = {};
     $rootScope.tableParams = {};
     $rootScope.url="";
-    $rootScope.socket = io.connect("http://ws.xss.pw");
+    $rootScope.socket = io.connect("http://wx.xss.pw");
     $rootScope.WW = document.documentElement.clientWidth;
     $rootScope.HH = document.documentElement.clientHeight;
     $rootScope.activeindex=$location.$$path.indexOf("/index")==0?0:1;
